@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHAIZAAN.COM // Retro Terminal</title>
+    <title>Shaizaan's Website</title>
     <meta
       name="description"
       content="Shaizaan — student, hobbyist programmer, and Hapkido martial artist. A retro cyberpunk arcade portfolio."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,8 +19,13 @@
   <body>
     <div class="crt-overlay" aria-hidden="true"></div>
     <div class="skyline" aria-hidden="true">
-      <div class="skyline__stars"></div>
-      <div class="skyline__buildings"></div>
+      <div class="skyline__stars" id="starsLayer"></div>
+      <div class="shooting-star shooting-star--a"></div>
+      <div class="shooting-star shooting-star--b"></div>
+      <div class="ufo">
+        <span class="ufo__light"></span>
+      </div>
+      <div class="skyline__buildings" id="buildingsLayer"></div>
       <div class="skyline__grid"></div>
     </div>
 

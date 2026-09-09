@@ -4,6 +4,7 @@ import { runTypewriter } from "./typewriter";
 import { renderInventory } from "./inventory";
 import { renderDataBank } from "./databank";
 import { renderJukebox } from "./jukebox";
+import { initBackground } from "./background";
 
 function requireEl<T extends HTMLElement>(selector: string): T {
   const el = document.querySelector<T>(selector);
@@ -14,6 +15,8 @@ function requireEl<T extends HTMLElement>(selector: string): T {
 }
 
 function init(): void {
+  initBackground(requireEl<HTMLElement>("#starsLayer"), requireEl<HTMLElement>("#buildingsLayer"));
+
   const typewriterEl = requireEl<HTMLElement>("#typewriter");
   runTypewriter(typewriterEl, {
     text: "Hello, I am Shaizaan. Student, hobbyist programmer, and Hapkido martial artist.",

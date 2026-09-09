@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHAIZAAN.COM // Retro Terminal</title>
+    <meta
+      name="description"
+      content="Shaizaan — student, hobbyist programmer, and Hapkido martial artist. A retro cyberpunk arcade portfolio."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="crt-overlay" aria-hidden="true"></div>
+    <div class="skyline" aria-hidden="true">
+      <div class="skyline__stars"></div>
+      <div class="skyline__buildings"></div>
+      <div class="skyline__grid"></div>
+    </div>
+
+    <div class="page">
+      <!-- HEADER / RETRO HUD -->
+      <header class="hud">
+        <div class="hud__title-wrap">
+          <h1 class="hud__title glow-flicker">SHAIZAAN.COM</h1>
+        </div>
+        <div class="hud__status" role="status">
+          <span class="hud__dot" aria-hidden="true"></span>
+          <span id="statusText">SYSTEM: ACTIVE // AMBIENT: WINTER MODE</span>
+        </div>
+        <nav class="hud__nav" aria-label="Primary">
+          <a href="#bio">BIO</a>
+          <a href="#inventory">INVENTORY</a>
+          <a href="#databank">DATA BANK</a>
+          <a href="#jukebox">JUKEBOX</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- HERO / TERMINAL BIO SECTION -->
+        <section id="bio" class="terminal" aria-label="About me">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+            <span class="terminal__bar-title">bio.exe</span>
+          </div>
+          <div class="terminal__body">
+            <p class="terminal__line">
+              <span class="prompt">&gt;</span>
+              <span id="typewriter" class="typewriter"></span
+              ><span class="cursor" aria-hidden="true">&#9608;</span>
+            </p>
+            <p class="terminal__blurb">
+              I write code in the dark with the monitor glow doing all the
+              lighting, chase side-quests in open worlds after midnight, and
+              keep a mug of <strong>Tiramisu Matcha</strong> or a cold
+              <strong>Mango Lassi</strong> within arm's reach at all times.
+              Somewhere between debugging a segfault and drilling a wrist
+              lock, I found my flow state.
+            </p>
+          </div>
+        </section>
+
+        <!-- TECH STACK / INVENTORY -->
+        <section id="inventory" class="section" aria-label="Tech stack inventory">
+          <h2 class="section__title">// INVENTORY</h2>
+          <p class="section__subtitle">Languages &amp; Tools equipped</p>
+          <ul id="inventoryGrid" class="inventory-grid" role="list"></ul>
+        </section>
+
+        <!-- DATA BANK -->
+        <section id="databank" class="section" aria-label="Favorites data bank">
+          <h2 class="section__title">// DATA BANK</h2>
+          <p class="section__subtitle">Favorites Terminal — select a log</p>
+          <div class="databank">
+            <div id="databankTabs" class="databank__tabs" role="tablist" aria-label="Data bank logs"></div>
+            <div id="databankPanels" class="databank__panels"></div>
+          </div>
+        </section>
+
+        <!-- JUKEBOX -->
+        <section id="jukebox" class="section" aria-label="Jukebox">
+          <h2 class="section__title">// JUKEBOX</h2>
+          <p class="section__subtitle">Select a track to shift the skyline</p>
+          <div class="jukebox">
+            <div class="jukebox__visualizer" id="visualizer" aria-hidden="true">
+              <span></span><span></span><span></span><span></span
+              ><span></span><span></span><span></span><span></span>
+            </div>
+            <ul id="jukeboxList" class="jukebox__list" role="list"></ul>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER / SOCIAL DOCK -->
+      <footer id="contact" class="footer">
+        <div class="footer__dock">
+          <a
+            class="dock-link"
+            href="https://www.instagram.com/shaizaanvaliyani"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >IG</a>
+          <a
+            class="dock-link"
+            href="https://github.com/shaizaanv"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >GH</a>
+          <a
+            class="dock-link"
+            href="https://www.tiktok.com/@shaiz.val"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >TT</a>
+          <a class="dock-link" href="mailto:shaizaanv@gmail.com" aria-label="Email">@</a>
+        </div>
+        <p class="footer__credit">&copy; 2026 SHAIZAAN.COM — PRESS START TO CONTINUE</p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

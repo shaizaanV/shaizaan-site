@@ -1,0 +1,104 @@
+.mail {
+  display: grid;
+  gap: 12px;
+}
+
+.mail__field {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.mail__field--stack {
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.mail__key {
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mail__address {
+  min-width: 0;
+  padding: 4px 8px;
+  overflow-wrap: anywhere;
+  background: var(--paper);
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+  font-size: 16px;
+}
+
+.mail__copy {
+  font-size: 14px;
+}
+
+.mail__status {
+  min-height: 1.4em;
+  margin: -8px 0 0 !important;
+  color: var(--title);
+  font-size: 14px;
+}
+
+.mail__input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+  resize: vertical;
+}
+
+.mail__input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.mail__input:focus-visible {
+  outline-offset: 1px;
+}
+
+.mail__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mail__quick .bevel {
+  padding: 2px 8px !important;
+  font-size: 13px;
+}
+
+.mail__quick .bevel[aria-pressed="true"] {
+  background: var(--paper);
+}
+
+.mail__note {
+  margin: -4px 0 0 !important;
+  font-size: 14px;
+}
+
+.mail__socials {
+  padding-top: 12px;
+  border-top: 1px solid var(--chrome);
+}
+
+.mail__socials h3 {
+  margin: 0 0 6px;
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .mail__field:not(.mail__field--stack) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mail__field > .mail__key {
+    grid-column: 1 / -1;
+  }
+}

@@ -4,6 +4,7 @@ import { BootScreen } from "./os/BootScreen";
 import { OS_NAME } from "./os/brand";
 import { Desktop } from "./os/Desktop";
 import { useElementSize, useMediaQuery } from "./os/hooks";
+import { SocialsIsland } from "./os/SocialsIsland";
 import { SoundProvider } from "./os/sound";
 import { Taskbar } from "./os/Taskbar";
 import { useHashRoute } from "./os/useHashRoute";
@@ -70,6 +71,7 @@ function Shell() {
         >
           <h1 className="sr-only">Shaizaan Valiyani: portfolio</h1>
           <Desktop selected={selected} onSelect={setSelected} />
+          <SocialsIsland />
           {wm.windows.map((win) => (
             <Window key={win.id} win={win} isFront={wm.focused?.id === win.id} isMobile={isMobile} desk={desk} />
           ))}

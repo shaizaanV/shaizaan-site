@@ -166,6 +166,36 @@ button.bevel[aria-pressed="true"] {
   outline-offset: 0;
 }
 
+/* ---------- socials island (desktop widget) ---------- */
+
+.island {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 0; /* windows always stack above it */
+  width: 260px;
+  padding: 3px;
+  background: var(--chrome);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink),
+    4px 4px 0 rgb(29 36 25 / 0.2);
+}
+
+.island__bar {
+  margin: 0;
+  padding: 4px 8px;
+  background: var(--title);
+  color: var(--title-ink);
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.island__body {
+  margin-top: 3px;
+  padding: 6px;
+  background: var(--paper);
+}
+
 /* ---------- windows ---------- */
 
 @keyframes win-in {
@@ -520,6 +550,12 @@ button.snd[aria-pressed="true"] {
   .icon {
     width: auto;
     min-height: 44px;
+  }
+
+  .island {
+    position: static;
+    width: auto;
+    margin: 4px 12px 12px;
   }
 
   .win__btn,

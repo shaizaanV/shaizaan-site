@@ -1,0 +1,58 @@
+.social-links {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: grid;
+  grid-template-columns: 30px auto 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 18%, var(--paper));
+}
+
+.social-link:focus-visible {
+  outline-offset: 0;
+}
+
+.social-link__badge {
+  display: grid;
+  place-items: center;
+  height: 22px;
+  background: var(--title);
+  color: var(--title-ink);
+  font-family: var(--f-display);
+  font-size: 11px;
+}
+
+/* YouTube is the main channel: give it the accent */
+.social-link--youtube .social-link__badge {
+  background: var(--accent);
+  color: var(--sel-ink);
+}
+
+.social-link__name {
+  font-family: var(--f-display);
+  font-size: 12px;
+}
+
+.social-link__handle {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

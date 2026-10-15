@@ -1,26 +1,11 @@
-export interface InventoryItem {
-  icon: string;
-  label: string;
-}
-
-export const inventory: InventoryItem[] = [
-  { icon: "PY", label: "Python" },
-  { icon: "C++", label: "C++" },
-  { icon: "C", label: "C" },
-  { icon: "TS", label: "TypeScript" },
-  { icon: "RB", label: "Ruby" },
-  { icon: "GIT", label: "Git" },
-  { icon: "F360", label: "Fusion360" },
-];
-
-export interface DataBankLog {
+export interface InterestLog {
   id: string;
   emoji: string;
   title: string;
   entries: string[];
 }
 
-export const dataBankLogs: DataBankLog[] = [
+export const interests: InterestLog[] = [
   {
     id: "media",
     emoji: "\u{1F3AE}",
@@ -88,21 +73,10 @@ export const dataBankLogs: DataBankLog[] = [
     title: "Subscribed Feeds",
     entries: ["TechJoyce", "CarterPCs"],
   },
-];
-
-export interface Track {
-  title: string;
-  hue: number;
-}
-
-export const jukeboxTracks: Track[] = [
-  { title: "Black and Yellow", hue: 260 },
-  { title: "God's Plan", hue: 200 },
-  { title: "Headlines", hue: 320 },
-  { title: "The Less I Know the Better", hue: 280 },
-  { title: "Freebird", hue: 20 },
-  { title: "Life Goes On", hue: 150 },
-  { title: "Feel Good Inc", hue: 100 },
-  { title: "Song 2", hue: 0 },
-  { title: "Can't Stop", hue: 340 },
+  {
+    id: "dojo",
+    emoji: "\u{1F94B}",
+    title: "Dojo Log",
+    entries: ["Hapkido"],
+  },
 ];

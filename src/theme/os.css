@@ -1,0 +1,455 @@
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: var(--cursor, default);
+  -webkit-font-smoothing: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: var(--cursor-hand, pointer);
+}
+
+a {
+  color: inherit;
+  cursor: var(--cursor-hand, pointer);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- bevels (the Win95 half) ---------- */
+
+.bevel {
+  border: 0;
+  background: var(--chrome);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+button.bevel {
+  padding: 4px 12px;
+}
+
+button.bevel:active,
+button.bevel[aria-pressed="true"] {
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+button.bevel.primary {
+  background: var(--accent);
+  color: var(--sel-ink);
+}
+
+.bevel-in {
+  box-shadow: inset 1px 1px 0 var(--lo), inset -1px -1px 0 var(--hi);
+}
+
+/* ---------- layout ---------- */
+
+.os {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.desk {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate; /* window z-indexes stay below the taskbar */
+  background-color: var(--desk);
+  background-image: radial-gradient(var(--desk-dot) 1px, transparent 1.6px);
+  background-size: 6px 6px;
+}
+
+/* ---------- desktop icons ---------- */
+
+.icons {
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 4px 6px;
+  width: max-content;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
+
+.icon {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: 96px;
+  padding: 6px 2px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+}
+
+.icon svg {
+  transition: transform 0.12s ease-out;
+}
+
+.icon:hover svg {
+  transform: translateY(-2px);
+}
+
+.icon span {
+  padding: 1px 4px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.icon[data-selected="true"] span {
+  background: var(--accent);
+  color: var(--sel-ink);
+}
+
+.icon:focus-visible {
+  outline: 2px dotted var(--ink);
+  outline-offset: 0;
+}
+
+/* ---------- windows ---------- */
+
+@keyframes win-in {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+}
+
+.win {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  padding: 3px;
+  background: var(--chrome);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink),
+    4px 4px 0 rgb(29 36 25 / 0.2);
+  animation: win-in 0.12s ease-out;
+}
+
+.win:focus {
+  outline: none; /* the front window's green title bar shows focus */
+}
+
+.win.is-moving {
+  outline: 3px solid var(--accent);
+  outline-offset: 0;
+}
+
+.win.is-max {
+  inset: 0;
+  box-shadow: none;
+}
+
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  padding: 2px;
+  background: var(--lo);
+  color: var(--title-ink);
+  font-family: var(--f-display);
+  font-size: 13px;
+  user-select: none;
+  touch-action: none;
+  cursor: var(--cursor-grab, grab);
+}
+
+.win.is-front .win__bar {
+  background: var(--title);
+}
+
+.win.is-max .win__bar {
+  cursor: default;
+}
+
+.win__title {
+  flex: 1;
+  min-width: 0;
+  padding-left: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.win__sys {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.win__btn {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 22px;
+  padding: 0 !important;
+  font-family: var(--f-display);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.win__hint {
+  margin: 3px 0 0;
+  padding: 2px 8px;
+  background: var(--accent);
+  font-size: 13px;
+}
+
+.win__body {
+  flex: 1;
+  min-height: 0;
+  margin-top: 3px;
+  padding: 16px 18px;
+  overflow: auto;
+  background: var(--paper);
+  box-shadow: inset 1px 1px 0 var(--lo);
+}
+
+.win__body h2 {
+  margin: 0 0 8px;
+  font-family: var(--f-display);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.win__body p {
+  max-width: 60ch;
+  margin: 0 0 10px;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* ---------- menus ---------- */
+
+.menu {
+  position: relative;
+}
+
+.menu__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  min-width: 200px;
+  margin: 2px 0 0;
+  padding: 3px;
+  list-style: none;
+  background: var(--chrome);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink),
+    3px 3px 0 rgb(29 36 25 / 0.25);
+  font-family: var(--f-body);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.menu__list--up {
+  top: auto;
+  bottom: 100%;
+  margin: 0 0 6px;
+}
+
+.menu__list button {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+
+.menu__list button:hover,
+.menu__list button:focus-visible {
+  outline: none;
+  background: var(--title);
+  color: var(--title-ink);
+}
+
+/* ---------- taskbar ---------- */
+
+.taskbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--taskbar-h);
+  padding: 4px 4px calc(4px + env(safe-area-inset-bottom, 0px));
+  background: var(--chrome);
+  box-shadow: inset 0 2px 0 var(--hi), 0 -1px 0 var(--ink);
+}
+
+.taskbar__start {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  font-family: var(--f-display);
+  font-size: 13px;
+}
+
+.taskbar__tasks {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 2px;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 180px;
+  height: 30px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.task span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task[aria-pressed="true"] {
+  background: var(--paper);
+}
+
+.taskbar__tray {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+button.snd {
+  padding: 3px 7px;
+  font-family: var(--f-display);
+  font-size: 11px;
+}
+
+button.snd[aria-pressed="true"] {
+  background: var(--accent);
+}
+
+/* ---------- small screens: full-screen windows, tap-sized targets ---------- */
+
+@media (max-width: 640px) {
+  .icons {
+    grid-template-rows: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: row;
+    width: auto;
+  }
+
+  .icon {
+    width: auto;
+    min-height: 44px;
+  }
+
+  .win__btn,
+  .win__sys {
+    width: 36px;
+    height: 32px;
+  }
+
+  .win__bar {
+    cursor: default;
+  }
+}
+
+@media (max-width: 420px) {
+  .taskbar__start-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .taskbar__clock {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+
+  .icon:hover svg {
+    transform: none;
+  }
+}

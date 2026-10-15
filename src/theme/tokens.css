@@ -1,0 +1,24 @@
+/* Shaizintosh: "Matcha" theme.
+   One committed look (no dark mode): the OS is its own world. Contrast pairs checked to WCAG AA. */
+
+:root {
+  --desk: #a8c69a;
+  --desk-dot: #93b384;
+  --chrome: #dcdcd2;
+  --hi: #ffffff;
+  --lo: #6c6e62;
+  --ink: #1d2419;
+  --muted: #4f5a49;
+  --paper: #ffffff;
+  --title: #3f6b3a;
+  --title-ink: #f4f8ee;
+  --accent: #e86a92; /* strawberry, on matcha */
+  --sel-ink: #1d2419;
+
+  --f-display: "Silkscreen", ui-monospace, monospace;
+  --f-body: "Pixelify Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --taskbar-h: 44px;
+
+  color-scheme: light;
+}

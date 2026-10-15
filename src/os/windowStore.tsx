@@ -24,7 +24,8 @@ type Action =
   | { type: "minimize"; id: AppId }
   | { type: "toggleMax"; id: AppId }
   | { type: "move"; id: AppId; x: number; y: number }
-  | { type: "setParams"; id: AppId; params: string };
+  | { type: "setParams"; id: AppId; params: string }
+  | { type: "closeAll" };
 
 function update(state: State, id: AppId, patch: (w: WinState) => Partial<WinState>): WinState[] {
   return state.windows.map((w) => (w.id === id ? { ...w, ...patch(w) } : w));
@@ -69,6 +70,8 @@ function reducer(state: State, action: Action): State {
       return { ...state, windows: update(state, action.id, () => ({ x: action.x, y: action.y })) };
     case "setParams":
       return { ...state, windows: update(state, action.id, () => ({ params: action.params })) };
+    case "closeAll":
+      return { ...state, windows: [] };
   }
 }
 
@@ -83,6 +86,7 @@ interface WindowApi {
   toggleMax: (id: AppId) => void;
   move: (id: AppId, x: number, y: number) => void;
   setParams: (id: AppId, params: string) => void;
+  closeAll: () => void;
 }
 
 const WindowContext = createContext<WindowApi | null>(null);
@@ -120,6 +124,7 @@ export function WindowProvider({ children }: { children: ReactNode }) {
       toggleMax: (id) => dispatch({ type: "toggleMax", id }),
       move: (id, x, y) => dispatch({ type: "move", id, x, y }),
       setParams: (id, params) => dispatch({ type: "setParams", id, params }),
+      closeAll: () => dispatch({ type: "closeAll" }),
     };
   }, [state, open, close]);
 

@@ -6,7 +6,7 @@ import { PixelIcon } from "./PixelIcon";
 import { useSound } from "./sound";
 import { useWindows } from "./windowStore";
 
-export function Taskbar() {
+export function Taskbar({ onRestart }: { onRestart: () => void }) {
   const wm = useWindows();
   const sound = useSound();
   const time = useClock();
@@ -16,7 +16,10 @@ export function Taskbar() {
       <Menu
         buttonClassName="bevel taskbar__start"
         placement="up"
-        items={apps.map((app) => ({ label: app.label, onSelect: () => wm.open(app.id) }))}
+        items={[
+          ...apps.map((app) => ({ label: app.label, onSelect: () => wm.open(app.id) })),
+          { label: "Restart…", onSelect: onRestart },
+        ]}
       >
         <PixelIcon name="logo" size={18} />
         <span className="taskbar__start-label">{OS_NAME}</span>

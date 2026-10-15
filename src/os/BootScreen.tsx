@@ -17,6 +17,7 @@ const JOKES = [
   "Reheating samosas",
   "Compiling C++ (this may take a while)",
   "Defragmenting Minecraft world",
+  "Becoming 10x More Preformative",
 ];
 const BOOT_COUNT_KEY = "shaizintosh.bootCount";
 

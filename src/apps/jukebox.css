@@ -1,0 +1,154 @@
+.jukebox {
+  display: grid;
+  gap: 20px;
+}
+
+.radio p {
+  margin: 0 0 10px !important;
+}
+
+/* the LCD: dark matcha screen with a fake spectrum */
+@keyframes viz {
+  0%,
+  100% {
+    height: 15%;
+  }
+  50% {
+    height: 95%;
+  }
+}
+
+.radio__lcd {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background: #1f3a1c;
+  color: #c8f0b4;
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.radio__now {
+  margin: 0 !important;
+  font-family: var(--f-display);
+  font-size: 13px;
+}
+
+.radio__viz {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+}
+
+.radio__viz i {
+  width: 5px;
+  height: 15%;
+  background: #c8f0b4;
+}
+
+.radio__lcd.is-playing .radio__viz i {
+  background: var(--accent);
+  animation: viz 0.6s steps(4) infinite;
+}
+
+.radio__songs {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.radio__song {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px !important;
+  text-align: left;
+}
+
+.radio__song[aria-pressed="true"] {
+  background: var(--paper);
+}
+
+.radio__icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--ink);
+  font-size: 13px;
+}
+
+.radio__title {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 14px;
+}
+
+.radio__vibe {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.radio__hint {
+  margin: 8px 0 0 !important;
+  font-size: 14px;
+}
+
+.onrepeat h3 {
+  margin: 0 0 2px;
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.onrepeat p {
+  margin: 0 0 10px !important;
+}
+
+.onrepeat__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: track;
+  border-top: 1px solid var(--chrome);
+}
+
+.onrepeat__list li {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--chrome);
+  counter-increment: track;
+}
+
+.onrepeat__list li::before {
+  content: counter(track, decimal-leading-zero);
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.onrepeat__link {
+  padding: 2px 8px !important;
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radio__lcd.is-playing .radio__viz i {
+    height: 60%;
+    animation: none;
+  }
+}

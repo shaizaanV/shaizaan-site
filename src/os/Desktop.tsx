@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { apps, type AppId } from "../apps/registry";
 import { PixelIcon } from "./PixelIcon";
+import { useSound } from "./sound";
 import { useWindows } from "./windowStore";
 
 const desktopApps = apps.filter((a) => a.desktop);
@@ -11,6 +12,7 @@ const desktopApps = apps.filter((a) => a.desktop);
  */
 export function Desktop({ selected, onSelect }: { selected: AppId | null; onSelect: (id: AppId | null) => void }) {
   const { open } = useWindows();
+  const { sfx } = useSound();
   const [tabIndex, setTabIndex] = useState(0);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   const pointerType = useRef("mouse");
@@ -50,6 +52,7 @@ export function Desktop({ selected, onSelect }: { selected: AppId | null; onSele
               pointerType.current = e.pointerType;
             }}
             onClick={(e) => {
+              if (selected !== app.id) sfx("select");
               onSelect(app.id);
               // detail 0 = keyboard activation, 2 = double-click.
               if (e.detail === 0 || e.detail >= 2 || pointerType.current !== "mouse") open(app.id);

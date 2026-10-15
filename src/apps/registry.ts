@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import type { IconName } from "../os/icons";
 import { About } from "./About";
 import { Interests } from "./Interests";
+import { Jukebox } from "./Jukebox";
 import { Mail } from "./Mail";
 import { placeholder } from "./Placeholder";
 import { Projects } from "./Projects";
@@ -29,7 +30,7 @@ export interface AppDef {
   component: ComponentType<AppProps>;
 }
 
-export type AppId = "readme" | "projects" | "about" | "tv" | "mail" | "interests" | "games" | "trash";
+export type AppId = "readme" | "projects" | "about" | "tv" | "mail" | "interests" | "jukebox" | "games" | "trash";
 
 // To add an app: add its id to AppId, then add an entry here. Order = desktop/Start menu order.
 export const apps: AppDef[] = [
@@ -39,6 +40,7 @@ export const apps: AppDef[] = [
   { id: "tv", label: "ShaizTV", title: "ShaizTV", icon: "tv", desktop: true, size: { w: 640, h: 600 }, component: Tv },
   { id: "mail", label: "Mail", title: "Mail", icon: "mail", desktop: true, size: { w: 480, h: 560 }, component: Mail },
   { id: "interests", label: "Interests", title: "Interests", icon: "heart", desktop: true, size: { w: 580, h: 480 }, component: Interests },
+  { id: "jukebox", label: "Jukebox", title: "Jukebox", icon: "cassette", desktop: true, size: { w: 480, h: 600 }, component: Jukebox },
   { id: "games", label: "Bug Sweeper", title: "Bug Sweeper", icon: "joy", desktop: true, size: { w: 360, h: 420 }, component: placeholder("Bug Sweeper") },
   { id: "trash", label: "Trash", title: "Trash", icon: "trash", desktop: true, size: { w: 360, h: 260 }, component: placeholder("Trash") },
 ];

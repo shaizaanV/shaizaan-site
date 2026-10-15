@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useReducer, useRef, type ReactNode } from "react";
 import type { AppId } from "../apps/registry";
+import { useSound } from "./sound";
 
 export interface WinState {
   id: AppId;
@@ -95,21 +96,24 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, { windows: [], topZ: 0 });
   // Whatever had focus when a window opened gets it back when that window closes.
   const openers = useRef(new Map<AppId, HTMLElement>());
+  const { sfx } = useSound();
 
   const open = useCallback((id: AppId, params?: string) => {
     const active = document.activeElement;
     if (active instanceof HTMLElement && active !== document.body) openers.current.set(id, active);
     dispatch({ type: "open", id, params });
-  }, []);
+    sfx("open");
+  }, [sfx]);
 
   const close = useCallback((id: AppId) => {
     dispatch({ type: "close", id });
+    sfx("close");
     const opener = openers.current.get(id);
     openers.current.delete(id);
     requestAnimationFrame(() => {
       if (opener?.isConnected) opener.focus();
     });
-  }, []);
+  }, [sfx]);
 
   const api = useMemo<WindowApi>(() => {
     const visible = state.windows.filter((w) => !w.minimized);
@@ -120,13 +124,16 @@ export function WindowProvider({ children }: { children: ReactNode }) {
       open,
       close,
       focus: (id) => dispatch({ type: "focus", id }),
-      minimize: (id) => dispatch({ type: "minimize", id }),
+      minimize: (id) => {
+        dispatch({ type: "minimize", id });
+        sfx("minimize");
+      },
       toggleMax: (id) => dispatch({ type: "toggleMax", id }),
       move: (id, x, y) => dispatch({ type: "move", id, x, y }),
       setParams: (id, params) => dispatch({ type: "setParams", id, params }),
       closeAll: () => dispatch({ type: "closeAll" }),
     };
-  }, [state, open, close]);
+  }, [state, open, close, sfx]);
 
   return <WindowContext.Provider value={api}>{children}</WindowContext.Provider>;
 }

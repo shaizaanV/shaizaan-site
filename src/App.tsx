@@ -5,7 +5,7 @@ import { OS_NAME } from "./os/brand";
 import { Desktop } from "./os/Desktop";
 import { useElementSize, useMediaQuery } from "./os/hooks";
 import { SocialsIsland } from "./os/SocialsIsland";
-import { SoundProvider } from "./os/sound";
+import { SoundProvider, useSound } from "./os/sound";
 import { Taskbar } from "./os/Taskbar";
 import { useHashRoute } from "./os/useHashRoute";
 import { Window } from "./os/Window";
@@ -26,6 +26,7 @@ function shouldBoot(): boolean {
 
 function Shell() {
   const wm = useWindows();
+  const { sfx } = useSound();
   const osRef = useRef<HTMLDivElement>(null);
   const deskRef = useRef<HTMLElement>(null);
   const desk = useElementSize(deskRef);
@@ -42,7 +43,8 @@ function Shell() {
       // Private mode etc.: the boot just plays again next visit.
     }
     setBooting(false);
-  }, []);
+    sfx("boot");
+  }, [sfx]);
 
   const restart = () => {
     wm.closeAll();

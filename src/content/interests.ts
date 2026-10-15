@@ -68,12 +68,6 @@ export const interests: InterestLog[] = [
     ],
   },
   {
-    id: "feeds",
-    emoji: "\u{1F3A5}",
-    title: "Subscribed Feeds",
-    entries: ["TechJoyce", "CarterPCs"],
-  },
-  {
     id: "dojo",
     emoji: "\u{1F94B}",
     title: "Dojo Log",

@@ -1,0 +1,53 @@
+@keyframes compiling {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+.compiling {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 24px 8px;
+  text-align: center;
+}
+
+.compiling h2 {
+  margin: 0 !important;
+}
+
+.compiling p {
+  margin: 0 !important;
+}
+
+.compiling__bar {
+  width: min(260px, 100%);
+  height: 18px;
+  padding: 3px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.compiling__bar i {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--title) 0 12px, transparent 12px 15px);
+  animation: compiling 1.6s steps(8) infinite;
+}
+
+.compiling__actions {
+  justify-content: center;
+  margin-top: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compiling__bar i {
+    width: 60%;
+    animation: none;
+  }
+}

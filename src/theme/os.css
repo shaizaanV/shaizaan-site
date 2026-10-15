@@ -173,7 +173,7 @@ button.bevel[aria-pressed="true"] {
   right: 16px;
   bottom: 16px;
   z-index: 0; /* windows always stack above it */
-  width: 260px;
+  width: 290px;
   padding: 3px;
   background: var(--chrome);
   box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink),

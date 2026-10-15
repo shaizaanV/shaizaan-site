@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "../content/projects";
 import type { IconName } from "../os/icons";
 import { PixelIcon } from "../os/PixelIcon";
+import { Compiling } from "./Compiling";
 import type { AppProps } from "./registry";
 import "./projects.css";
 
@@ -31,7 +32,21 @@ export function Projects({ params, setParams, open }: AppProps) {
     listRef.current?.querySelector<HTMLButtonElement>(`[data-slug="${lastOpened.current}"]`)?.focus();
   }, [params]);
 
-  if (projects.length === 0) return <EmptyState openTv={() => open("tv")} />;
+  if (projects.length === 0) {
+    return (
+      <Compiling
+        icon="folder"
+        title="New projects compiling…"
+        actions={
+          <button type="button" className="bevel primary" onClick={() => open("tv")}>
+            Open ShaizTV
+          </button>
+        }
+      >
+        <p>I'm writing these up right now. In the meantime, the builds live on YouTube.</p>
+      </Compiling>
+    );
+  }
 
   if (params) {
     const project = projects.find((p) => p.slug === params);
@@ -162,21 +177,5 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
         </div>
       )}
     </article>
-  );
-}
-
-function EmptyState({ openTv }: { openTv: () => void }) {
-  return (
-    <div className="projects-empty">
-      <PixelIcon name="folder" size={64} />
-      <h2>New projects compiling…</h2>
-      <div className="projects-empty__bar" aria-hidden="true">
-        <i />
-      </div>
-      <p>I'm writing these up right now. In the meantime, the builds live on YouTube.</p>
-      <button type="button" className="bevel primary" onClick={openTv}>
-        Open ShaizTV
-      </button>
-    </div>
   );
 }

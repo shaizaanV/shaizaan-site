@@ -1,0 +1,123 @@
+/* ---------- toast ---------- */
+
+.egg-toast {
+  position: fixed;
+  bottom: calc(var(--taskbar-h) + 16px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  z-index: 120;
+  max-width: min(460px, calc(100vw - 32px));
+  margin: 0;
+  padding: 8px 14px;
+  translate: -50% 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 0 0 0 2px var(--ink), 4px 4px 0 var(--ink);
+}
+
+/* ---------- Hapkido mode: windows block and counter ---------- */
+
+@keyframes hapkido {
+  0% { translate: 0 0; rotate: 0deg; }
+  15% { translate: -10px 2px; rotate: -2deg; }
+  30% { translate: 14px -4px; rotate: 3deg; }
+  45% { translate: -6px 0; rotate: -1deg; }
+  60% { translate: 8px -2px; rotate: 1deg; }
+  100% { translate: 0 0; rotate: 0deg; }
+}
+
+/* keeps win-in in the list so windows don't replay their open animation when the mode ends */
+.hapkido .win {
+  animation: win-in 0.12s ease-out, hapkido 0.6s steps(6) 1;
+}
+
+/* ---------- matcha pour ---------- */
+
+@keyframes matcha-pour {
+  0% { height: 0; }
+  35%, 65% { height: 62%; }
+  100% { height: 0; }
+}
+
+.matcha-pour {
+  position: fixed;
+  right: 0;
+  bottom: var(--taskbar-h);
+  left: 0;
+  z-index: 90;
+  height: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10px 6px, #f3f6e4 5px, transparent 6px) 0 0 / 24px 14px repeat-x,
+    linear-gradient(#a7cf86, #6f9e52);
+  animation: matcha-pour 3.6s ease-in-out forwards;
+}
+
+/* ---------- "Cannot delete Shaizaan" dialog ---------- */
+
+.egg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgb(29 36 25 / 0.15);
+}
+
+.egg-dialog {
+  position: relative;
+  width: min(340px, 100%);
+  animation: none;
+}
+
+.egg-dialog__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.egg-dialog__body p {
+  margin: 0 !important;
+}
+
+.egg-dialog__body .bevel {
+  grid-column: 1 / -1;
+  justify-self: center;
+  min-width: 90px;
+}
+
+/* ---------- screensaver ---------- */
+
+.screensaver {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  background: #142412;
+}
+
+.screensaver__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.screensaver__hint {
+  position: absolute;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  left: 0;
+  right: 0;
+  margin: 0;
+  color: #c8f0b4;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hapkido .win {
+    animation: none;
+  }
+}

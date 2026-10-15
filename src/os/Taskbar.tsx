@@ -17,7 +17,7 @@ export function Taskbar({ onRestart }: { onRestart: () => void }) {
         buttonClassName="bevel taskbar__start"
         placement="up"
         items={[
-          ...apps.map((app) => ({ label: app.label, onSelect: () => wm.open(app.id) })),
+          ...apps.filter((app) => app.menu !== false).map((app) => ({ label: app.label, onSelect: () => wm.open(app.id) })),
           { label: "Restart…", onSelect: onRestart },
         ]}
       >

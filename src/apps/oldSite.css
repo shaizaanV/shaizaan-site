@@ -1,0 +1,47 @@
+.oldsite {
+  display: grid;
+  gap: 12px;
+}
+
+.oldsite p {
+  margin: 0 !important;
+}
+
+.oldsite__screen {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.oldsite__canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+}
+
+.oldsite__overlay {
+  position: absolute;
+  inset: 12px 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.oldsite__title {
+  color: #ffd700;
+  font-family: var(--f-display);
+  font-size: clamp(18px, 6cqi, 30px);
+  text-shadow: 0 0 4px rgb(255 215 0 / 0.9), 0 0 14px rgb(255 215 0 / 0.55);
+}
+
+.oldsite__status {
+  color: #b9aed4;
+  font-family: var(--f-display);
+  font-size: 11px;
+}
+
+.oldsite {
+  container-type: inline-size;
+}

@@ -78,7 +78,7 @@ function kick(dest: AudioNode, start: number): void {
 
 // ---------- sound effects ----------
 
-export type Sfx = "open" | "close" | "minimize" | "boot" | "on" | "select" | "win" | "lose" | "cluck" | "chomp";
+export type Sfx = "open" | "close" | "minimize" | "boot" | "on" | "select" | "win" | "lose" | "cluck" | "chomp" | "kiai";
 
 const SFX: Record<Sfx, [note: string, at: number, dur: number][]> = {
   open: [["C5", 0, 0.05], ["G5", 0.05, 0.08]],
@@ -90,6 +90,7 @@ const SFX: Record<Sfx, [note: string, at: number, dur: number][]> = {
   lose: [["E4", 0, 0.12], ["C4", 0.12, 0.12], ["A3", 0.24, 0.35]],
   cluck: [["A5", 0, 0.04], ["E6", 0.05, 0.05]],
   chomp: [["C4", 0, 0.04], ["C4", 0.09, 0.04]],
+  kiai: [["G5", 0, 0.05], ["C6", 0.06, 0.06], ["G6", 0.13, 0.14]],
   boot: [["C5", 0, 0.12], ["G4", 0.12, 0.12], ["C5", 0.24, 0.12], ["E5", 0.36, 0.12], ["G5", 0.48, 0.12], ["C6", 0.6, 0.4]],
 };
 

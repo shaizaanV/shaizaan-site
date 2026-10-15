@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { appsById } from "../apps/registry";
+import { emitEgg } from "./eggs/events";
 import type { Size } from "./hooks";
 import { Menu, type MenuItem } from "./Menu";
 import { PixelIcon } from "./PixelIcon";
@@ -47,9 +48,22 @@ export function Window({ win, isFront, isMobile, desk }: WindowProps) {
     const bar = e.currentTarget;
     bar.setPointerCapture(e.pointerId);
     const start = { px: e.clientX, py: e.clientY, x, y };
-    const onMove = (ev: globalThis.PointerEvent) =>
+    // Easter egg: dragging a window onto the Trash icon.
+    const trash = document.querySelector<HTMLElement>('.icon[data-app="trash"]');
+    const overTrash = (ev: globalThis.PointerEvent) => {
+      const r = trash?.getBoundingClientRect();
+      return !!r && ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom;
+    };
+    const onMove = (ev: globalThis.PointerEvent) => {
       wm.move(win.id, clampX(start.x + ev.clientX - start.px), clampY(start.y + ev.clientY - start.py));
-    const onUp = () => {
+      trash?.toggleAttribute("data-drop", overTrash(ev));
+    };
+    const onUp = (ev: globalThis.PointerEvent) => {
+      trash?.removeAttribute("data-drop");
+      if (ev.type === "pointerup" && overTrash(ev)) {
+        wm.move(win.id, start.x, start.y);
+        emitEgg("trash-drop");
+      }
       bar.removeEventListener("pointermove", onMove);
       bar.removeEventListener("pointerup", onUp);
       bar.removeEventListener("pointercancel", onUp);
@@ -155,6 +169,7 @@ export function Window({ win, isFront, isMobile, desk }: WindowProps) {
           params={win.params}
           open={wm.open}
           setParams={(params) => wm.setParams(win.id, params)}
+          close={() => wm.close(win.id)}
         />
       </div>
     </section>

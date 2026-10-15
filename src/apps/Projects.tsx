@@ -116,7 +116,9 @@ export function Projects({ params, setParams, open }: AppProps) {
 
 function ProjectDetail({ project, onBack }: { project: Project; onBack: () => void }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => headingRef.current?.focus(), [project.slug]);
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, [project.slug]);
 
   const links = (Object.keys(LINK_LABELS) as (keyof Project["links"])[]).filter((k) => project.links[k]);
 

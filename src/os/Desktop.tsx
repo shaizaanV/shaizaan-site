@@ -45,6 +45,7 @@ export function Desktop({ selected, onSelect }: { selected: AppId | null; onSele
             }}
             type="button"
             className="icon"
+            data-app={app.id}
             tabIndex={i === tabIndex ? 0 : -1}
             data-selected={selected === app.id}
             onFocus={() => setTabIndex(i)}

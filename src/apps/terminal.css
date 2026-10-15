@@ -1,0 +1,51 @@
+/* fills the window body edge to edge */
+.win__body:has(.term) {
+  padding: 0;
+  background: #142412;
+}
+
+.term {
+  min-height: 100%;
+  padding: 12px 14px;
+  background: #142412;
+  color: #c8f0b4;
+  font-family: var(--f-body);
+  font-size: 15px;
+  cursor: text;
+}
+
+.term__line {
+  margin: 0 0 6px;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.term__line--in {
+  color: #ffffff;
+}
+
+.term__input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.term__prompt {
+  color: var(--accent);
+}
+
+.term__input {
+  flex: 1;
+  min-width: 120px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  caret-color: var(--accent);
+}
+
+.term__input:focus-visible {
+  outline: none;
+}

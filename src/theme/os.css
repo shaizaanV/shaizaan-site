@@ -166,6 +166,16 @@ button.bevel[aria-pressed="true"] {
   outline-offset: 0;
 }
 
+/* a window is being dragged over this icon (the Trash easter egg) */
+.icon[data-drop] svg {
+  transform: scale(1.2) rotate(-6deg);
+}
+
+.icon[data-drop] span {
+  background: var(--accent);
+  color: var(--sel-ink);
+}
+
 /* ---------- socials island (desktop widget) ---------- */
 
 .island {

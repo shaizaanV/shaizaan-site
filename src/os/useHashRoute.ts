@@ -7,10 +7,21 @@ interface Route {
   params: string;
 }
 
-/** "#projects/plant-o-matic" -> { id: "projects", params: "plant-o-matic" } */
+/**
+ * "#projects/plant-o-matic" -> { id: "projects", params: "plant-o-matic" }.
+ * Unknown apps open the Sad Floppy (notfound) with what was asked for.
+ */
 function parseHash(hash: string): Route | null {
-  const [id = "", ...rest] = decodeURIComponent(hash.replace(/^#/, "")).split("/");
-  if (!(id in appsById)) return null;
+  const encoded = hash.replace(/^#/, "");
+  if (!encoded) return null;
+  let raw: string;
+  try {
+    raw = decodeURIComponent(encoded);
+  } catch {
+    return { id: "notfound", params: encoded }; // malformed, e.g. a stray "%"
+  }
+  const [id = "", ...rest] = raw.split("/");
+  if (!(id in appsById)) return { id: "notfound", params: raw };
   return { id: id as AppId, params: rest.join("/") };
 }
 

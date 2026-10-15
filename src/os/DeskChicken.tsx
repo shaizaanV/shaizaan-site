@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useEgg } from "./eggs/events";
 import { useMediaQuery } from "./hooks";
 import { PixelIcon } from "./PixelIcon";
 import { useSound } from "./sound";
@@ -157,6 +158,8 @@ export function DeskChicken({ deskWidth }: { deskWidth: number }) {
     say("bawk!");
     wake.current();
   };
+
+  useEgg("feed", () => feed());
 
   return (
     <>

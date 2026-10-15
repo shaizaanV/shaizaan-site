@@ -4,6 +4,7 @@ import { BootScreen } from "./os/BootScreen";
 import { OS_NAME } from "./os/brand";
 import { DeskChicken } from "./os/DeskChicken";
 import { Desktop } from "./os/Desktop";
+import { Eggs } from "./os/eggs/Eggs";
 import { useElementSize, useMediaQuery } from "./os/hooks";
 import { SocialsIsland } from "./os/SocialsIsland";
 import { SoundProvider, useSound } from "./os/sound";
@@ -82,6 +83,7 @@ function Shell() {
         </main>
         <Taskbar onRestart={restart} />
       </div>
+      <Eggs active={!booting} />
       {booting && <BootScreen onDone={finishBoot} />}
     </>
   );

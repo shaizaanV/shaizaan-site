@@ -1,5 +1,5 @@
 // 12x12 pixel icons. Each letter is a theme colour (see PixelIcon), "." is transparent.
-//   k = ink   a = accent   w = paper   c = chrome   t = title
+//   k = ink   a = accent   w = paper   c = chrome   t = title   o = orange (beaks, samosas)
 
 export const ICONS = {
   logo: [
@@ -182,6 +182,48 @@ export const ICONS = {
     "...k........",
     "..kkk.......",
     ".kkkkk......",
+    "............",
+  ],
+  chicken: [
+    "......aa....",
+    ".....kaak...",
+    "....kwwwwk..",
+    "....kwkwwoo.",
+    "....kwwwwk..",
+    ".kk.kwwwwk..",
+    "kwwkkwwwwk..",
+    "kwwwwwwwwk..",
+    ".kwwwwwwk...",
+    "..kkkkkk....",
+    "...o..o.....",
+    "..oo..oo....",
+  ],
+  chickenStep: [
+    "......aa....",
+    ".....kaak...",
+    "....kwwwwk..",
+    "....kwkwwoo.",
+    "....kwwwwk..",
+    ".kk.kwwwwk..",
+    "kwwkkwwwwk..",
+    "kwwwwwwwwk..",
+    ".kwwwwwwk...",
+    "..kkkkkk....",
+    "....o.o.....",
+    "...oo.oo....",
+  ],
+  samosa: [
+    "............",
+    "............",
+    ".....kk.....",
+    "....kook....",
+    "....koook...",
+    "...kooooook.",
+    "...koooook..",
+    "..koooooook.",
+    "..kkkkkkkkk.",
+    "............",
+    "............",
     "............",
   ],
   trash: [

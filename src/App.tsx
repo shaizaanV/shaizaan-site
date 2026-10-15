@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { AppId } from "./apps/registry";
 import { BootScreen } from "./os/BootScreen";
 import { OS_NAME } from "./os/brand";
+import { DeskChicken } from "./os/DeskChicken";
 import { Desktop } from "./os/Desktop";
 import { useElementSize, useMediaQuery } from "./os/hooks";
 import { SocialsIsland } from "./os/SocialsIsland";
@@ -73,6 +74,7 @@ function Shell() {
         >
           <h1 className="sr-only">Shaizaan Valiyani: portfolio</h1>
           <Desktop selected={selected} onSelect={setSelected} />
+          <DeskChicken deskWidth={desk.w} />
           <SocialsIsland />
           {wm.windows.map((win) => (
             <Window key={win.id} win={win} isFront={wm.focused?.id === win.id} isMobile={isMobile} desk={desk} />

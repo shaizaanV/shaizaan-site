@@ -6,6 +6,7 @@ const FILL: Record<string, string> = {
   w: "var(--paper)",
   c: "var(--chrome)",
   t: "var(--title)",
+  o: "#e39b2d",
 };
 
 interface Run {

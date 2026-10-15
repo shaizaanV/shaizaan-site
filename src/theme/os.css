@@ -26,6 +26,8 @@ body {
   line-height: 1.5;
   cursor: var(--cursor, default);
   -webkit-font-smoothing: none;
+  /* Pixelify Sans' "fi" ligature looks like a capital A ("film" -> "Alm") */
+  font-variant-ligatures: none;
 }
 
 button {
@@ -68,16 +70,25 @@ a {
   box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink);
 }
 
-button.bevel {
+button.bevel,
+a.bevel {
   padding: 4px 12px;
 }
 
-button.bevel:active,
+a.bevel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.bevel:is(button, a):active,
 button.bevel[aria-pressed="true"] {
   box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
 }
 
-button.bevel.primary {
+.bevel:is(button, a).primary {
   background: var(--accent);
   color: var(--sel-ink);
 }

@@ -1,0 +1,254 @@
+/* ---------- shared bits ---------- */
+
+.draft-tag {
+  margin-left: 8px;
+  padding: 0 5px;
+  background: var(--accent);
+  color: var(--sel-ink);
+  font-family: var(--f-display);
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 0 8px;
+  border: 1px solid var(--ink);
+  font-size: 14px;
+}
+
+/* ---------- list ---------- */
+
+.projects {
+  display: grid;
+  gap: 14px;
+}
+
+.projects__head p {
+  margin: 0;
+}
+
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projects__filters .bevel {
+  font-size: 14px;
+}
+
+.projects__filters .bevel[aria-pressed="true"] {
+  background: var(--paper);
+}
+
+.projects__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--chrome);
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 10px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--chrome);
+  background: none;
+  text-align: left;
+}
+
+.project-row:hover,
+.project-row:focus-visible {
+  background: color-mix(in srgb, var(--accent) 18%, var(--paper));
+}
+
+.project-row:focus-visible {
+  outline-offset: -3px;
+}
+
+.project-row svg {
+  transition: transform 0.12s ease-out;
+}
+
+.project-row:hover svg {
+  transform: translateY(-2px) rotate(-4deg);
+}
+
+.project-row__text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.project-row__title {
+  font-family: var(--f-display);
+  font-size: 15px;
+}
+
+.project-row__hook {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.project-row__cat {
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- detail ---------- */
+
+.project {
+  display: grid;
+  gap: 16px;
+}
+
+.project__back {
+  justify-self: start;
+  font-size: 14px;
+}
+
+.project__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 14px;
+}
+
+.project__head h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+.project__head h2:focus {
+  outline: none;
+}
+
+.project__cat {
+  margin: 0 0 4px !important;
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--title);
+}
+
+.project__hook {
+  margin: 0 !important;
+  font-size: 18px;
+}
+
+.project__image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--ink);
+  image-rendering: auto;
+}
+
+.project__facts {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px 16px;
+  margin: 0;
+}
+
+.project__facts dt {
+  padding-top: 3px;
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.project__facts dd {
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---------- empty + missing ---------- */
+
+@keyframes compiling {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+.projects-empty {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 24px 8px;
+  text-align: center;
+}
+
+.projects-empty h2 {
+  margin: 0 !important;
+}
+
+.projects-empty__bar {
+  width: min(260px, 100%);
+  height: 18px;
+  padding: 3px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.projects-empty__bar i {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--title) 0 12px, transparent 12px 15px);
+  animation: compiling 1.6s steps(8) infinite;
+}
+
+.projects-missing {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .project-row {
+    grid-template-columns: auto 1fr;
+  }
+
+  .project-row__cat {
+    display: none;
+  }
+
+  .project__facts {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .project__facts dd {
+    margin-bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-empty__bar i {
+    width: 60%;
+    animation: none;
+  }
+
+  .project-row:hover svg {
+    transform: none;
+  }
+}

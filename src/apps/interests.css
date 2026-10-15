@@ -1,0 +1,75 @@
+.interests {
+  display: grid;
+}
+
+.interests__intro {
+  margin: 0 0 12px !important;
+}
+
+/* tabs as chunky toggle buttons: they wrap cleanly at any window width */
+.interests__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.interests__tab {
+  padding: 4px 10px !important;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.interests__tab:hover {
+  background: color-mix(in srgb, var(--accent) 20%, var(--chrome));
+}
+
+.interests__tab[aria-selected="true"] {
+  background: var(--paper);
+  font-weight: 600;
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.interests__panel {
+  padding: 14px;
+  background: var(--paper);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.interests__panel:focus-visible {
+  outline-offset: 2px;
+}
+
+.interests__count {
+  margin: 0 0 10px !important;
+  font-family: var(--f-display);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.interests__entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interests__entries li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border: 1px solid var(--chrome);
+  font-size: 15px;
+}
+
+.interests__entries li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--ink);
+}

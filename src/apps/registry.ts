@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import type { IconName } from "../os/icons";
 import { About } from "./About";
+import { Interests } from "./Interests";
 import { Mail } from "./Mail";
 import { placeholder } from "./Placeholder";
 import { Projects } from "./Projects";
@@ -37,7 +38,7 @@ export const apps: AppDef[] = [
   { id: "about", label: "About Me", title: "About Me", icon: "person", desktop: true, size: { w: 560, h: 560 }, component: About },
   { id: "tv", label: "ShaizTV", title: "ShaizTV", icon: "tv", desktop: true, size: { w: 640, h: 600 }, component: Tv },
   { id: "mail", label: "Mail", title: "Mail", icon: "mail", desktop: true, size: { w: 480, h: 560 }, component: Mail },
-  { id: "interests", label: "Interests", title: "Interests", icon: "heart", desktop: true, size: { w: 520, h: 440 }, component: placeholder("Interests") },
+  { id: "interests", label: "Interests", title: "Interests", icon: "heart", desktop: true, size: { w: 580, h: 480 }, component: Interests },
   { id: "games", label: "Bug Sweeper", title: "Bug Sweeper", icon: "joy", desktop: true, size: { w: 360, h: 420 }, component: placeholder("Bug Sweeper") },
   { id: "trash", label: "Trash", title: "Trash", icon: "trash", desktop: true, size: { w: 360, h: 260 }, component: placeholder("Trash") },
 ];

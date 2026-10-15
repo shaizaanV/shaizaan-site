@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { IconName } from "../os/icons";
+import { About } from "./About";
 import { placeholder } from "./Placeholder";
 import { Projects } from "./Projects";
 import { Readme } from "./Readme";
@@ -31,7 +32,7 @@ export type AppId = "readme" | "projects" | "about" | "tv" | "mail" | "interests
 export const apps: AppDef[] = [
   { id: "readme", label: "README.txt", title: "README.txt", icon: "doc", desktop: true, size: { w: 460, h: 340 }, component: Readme },
   { id: "projects", label: "Projects", title: "Projects", icon: "folder", desktop: true, size: { w: 640, h: 480 }, component: Projects },
-  { id: "about", label: "About Me", title: "About Me", icon: "person", desktop: true, size: { w: 520, h: 460 }, component: placeholder("About Me") },
+  { id: "about", label: "About Me", title: "About Me", icon: "person", desktop: true, size: { w: 560, h: 560 }, component: About },
   { id: "tv", label: "ShaizTV", title: "ShaizTV", icon: "tv", desktop: true, size: { w: 600, h: 440 }, component: placeholder("ShaizTV") },
   { id: "mail", label: "Mail", title: "Mail", icon: "mail", desktop: true, size: { w: 420, h: 320 }, component: placeholder("Mail") },
   { id: "interests", label: "Interests", title: "Interests", icon: "heart", desktop: true, size: { w: 520, h: 440 }, component: placeholder("Interests") },

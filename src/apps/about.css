@@ -1,0 +1,98 @@
+.about {
+  display: grid;
+  gap: 18px;
+}
+
+.about__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.about__avatar {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  background: var(--desk);
+  background-image: radial-gradient(var(--desk-dot) 1px, transparent 1.6px);
+  background-size: 6px 6px;
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi), 0 0 0 1px var(--ink);
+}
+
+.about__head h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+.about__roles {
+  margin: 0 !important;
+  color: var(--title);
+  font-family: var(--f-display);
+  font-size: 12px;
+}
+
+.about__bio p {
+  margin: 0 0 12px;
+}
+
+.about__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.about__label {
+  margin: 0 0 10px;
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.about__label .muted {
+  font-family: var(--f-body);
+  font-size: 14px;
+}
+
+/* skills as game inventory slots */
+.inventory {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: var(--chrome);
+  box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi);
+}
+
+.inventory__slot {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 10px 4px 8px;
+  background: var(--paper);
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), 0 0 0 1px var(--ink);
+  transition: transform 0.12s ease-out;
+}
+
+.inventory__slot:hover {
+  transform: translateY(-2px);
+}
+
+.inventory__icon {
+  font-family: var(--f-display);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--title);
+}
+
+.inventory__label {
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inventory__slot:hover {
+    transform: none;
+  }
+}

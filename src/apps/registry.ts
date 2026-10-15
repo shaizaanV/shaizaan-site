@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { IconName } from "../os/icons";
+import { BugSweeper } from "./bugSweeper/BugSweeper";
 import { About } from "./About";
 import { Interests } from "./Interests";
 import { Jukebox } from "./Jukebox";
@@ -41,7 +42,7 @@ export const apps: AppDef[] = [
   { id: "mail", label: "Mail", title: "Mail", icon: "mail", desktop: true, size: { w: 480, h: 560 }, component: Mail },
   { id: "interests", label: "Interests", title: "Interests", icon: "heart", desktop: true, size: { w: 580, h: 480 }, component: Interests },
   { id: "jukebox", label: "Jukebox", title: "Jukebox", icon: "cassette", desktop: true, size: { w: 480, h: 600 }, component: Jukebox },
-  { id: "games", label: "Bug Sweeper", title: "Bug Sweeper", icon: "joy", desktop: true, size: { w: 360, h: 420 }, component: placeholder("Bug Sweeper") },
+  { id: "games", label: "Bug Sweeper", title: "Bug Sweeper", icon: "joy", desktop: true, size: { w: 460, h: 600 }, component: BugSweeper },
   { id: "trash", label: "Trash", title: "Trash", icon: "trash", desktop: true, size: { w: 360, h: 260 }, component: placeholder("Trash") },
 ];
 

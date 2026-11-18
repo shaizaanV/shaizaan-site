@@ -13,21 +13,13 @@ export const interests: InterestLog[] = [
     entries: [
       "Cyberpunk 2077",
       "Minecraft",
-      "Stardew Valley",
-      "Undertale",
       "Breaking Bad",
       "Stranger Things",
       "Dr. Strange",
       "Spider-Man",
-      "Iron Man",
     ],
   },
-  {
-    id: "manga",
-    emoji: "\u{1F4DA}",
-    title: "Manga Log",
-    entries: ["One Piece", "Dragon Ball Z", "One Punch Man"],
-  },
+  
   {
     id: "provisions",
     emoji: "\u{1F355}",
@@ -67,10 +59,4 @@ export const interests: InterestLog[] = [
       "American Football",
     ],
   },
-  {
-    id: "dojo",
-    emoji: "\u{1F94B}",
-    title: "Dojo Log",
-    entries: ["Hapkido"],
-  },
-];
+

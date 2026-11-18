@@ -11,6 +11,7 @@ export const socials: Social[] = [
   { id: "tiktok", label: "TikTok", handle: "@shaizaanvaliyani", url: "https://www.tiktok.com/@shaizaanvaliyani" },
   { id: "x", label: "X", handle: "@shaizaanvali", url: "https://x.com/shaizaanvali" },
   { id: "github", label: "GitHub", handle: "shaizaanv", url: "https://github.com/shaizaanv" },
+  { id: "codeforces", label: "Codeforces", handle: "shaizaan", url: "https://codeforces.com/profile/shaizaan" },
 ];
 
 export const email = "shaizaanv@gmail.com";

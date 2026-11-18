@@ -41,7 +41,7 @@ const allProjects: Project[] = [
     tech: ["C++", "ESP32", "Python", "Fusion 360"],
     role: "Solo: wiring, firmware, 3D-printed case",
     links: { repo: "https://github.com/shaizaanv" },
-    draft: true,
+    draft: false,
   },
   {
     slug: "focus-fox",
